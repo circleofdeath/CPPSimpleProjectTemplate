@@ -29,10 +29,6 @@ configure_file(${STATIC_DIR}/desktop_template.desktop.in
 
 if(UNIX)
     execute_process(COMMAND chmod +x ${OUTPUT_DIR}/${PROJECT_NAME}.desktop)
-endif()
-
-
-if(UNIX)
     add_executable(${PROJECT_NAME} ${SOURCES})
     # Link to any Unix-specific libraries, e.g. .so files
     # target_link_libraries(${PROJECT_NAME} ${STATIC_DIR}/mylib.so)
