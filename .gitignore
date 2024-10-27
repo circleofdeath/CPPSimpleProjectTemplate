@@ -1,2 +1,7 @@
-executable
+## Reloease of app
 build/
+
+## Eclipse stuff
+.settings/
+.cproject
+.project

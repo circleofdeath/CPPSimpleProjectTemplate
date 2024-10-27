@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=@PROJECT_NAME@
+Exec=./@PROJECT_NAME@
+Icon=@ICON_PATH@
+Type=Application
+Categories=Utility;
+Comment=@PROJECT_DESCRIPTION@
