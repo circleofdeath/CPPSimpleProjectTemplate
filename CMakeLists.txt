@@ -35,9 +35,10 @@ if(UNIX)
 endif()
 
 if(WIN32)
-    add_executable(${PROJECT_NAME} ${SOURCES} ${CMAKE_BINARY_DIR}/resource.rc)
+    add_executable(${PROJECT_NAME} ${SOURCES} ${OUTPUT_DIR}/resource.rc)
     # Link to any Windows-specific libraries, e.g. .dll files
     # target_link_libraries(${PROJECT_NAME} ${STATIC_DIR}/mylib.dll)
+    target_compile_options(${PROJECT_NAME} PRIVATE -static-libgcc -static-libstdc++)
 endif()
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIR})
