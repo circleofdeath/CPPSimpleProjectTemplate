@@ -26,6 +26,10 @@ This is a cross-platform C++ project template that uses CMake for building. It s
 
 ## Building the Project
 
+To build a project for both platform compile in Virtualbox executables for both linux and Windows.
+Then, move ALL files of both platforms to the same directory, overriding some files put
+this must be okay. and you have a 1 project for both platforms
+
 ### For Linux
 
 1. Open a terminal.
@@ -44,7 +48,7 @@ This is a cross-platform C++ project template that uses CMake for building. It s
    ```
 
 ## Output
-After building, the compiled executables will be located in the `build/release` directory. Both Linux and Windows builds will output their respective executables here.
+After building, the compiled executables will be located in the `build/release` directory.
 
 ## Customizing Metadata
 

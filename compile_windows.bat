@@ -47,6 +47,6 @@ cd ..
 exit /b
 
 call :build_windows
-call :build_linux
+rem call :build_linux
 
 echo Build completed!

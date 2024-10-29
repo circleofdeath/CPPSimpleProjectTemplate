@@ -28,6 +28,6 @@ mkdir build
 cd build
 
 build linux
-build windows
+# build windows
 
 echo "Build completed!"

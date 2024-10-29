@@ -21,13 +21,14 @@ set(EXCLUDED_FILES
     "resource_template.rc.in"
 )
 
-configure_file(${STATIC_DIR}/resource_template.rc.in
-               ${OUTPUT_DIR}/resource.rc @ONLY)
-
-configure_file(${STATIC_DIR}/desktop_template.desktop.in
-               ${OUTPUT_DIR}/${PROJECT_NAME}.desktop @ONLY)
-
 if(UNIX)
+    file(GLOB DLL_FILES "${STATIC_DIR}/*.dll")
+    foreach(DLL_FILE ${DLL_FILES})
+        get_filename_component(FILENAME ${DLL_FILE} NAME)
+        list(APPEND EXCLUDED_FILES "${FILENAME}")
+    endforeach()
+    configure_file(${STATIC_DIR}/desktop_template.desktop.in
+               ${OUTPUT_DIR}/${PROJECT_NAME}.desktop @ONLY)
     execute_process(COMMAND chmod +x ${OUTPUT_DIR}/${PROJECT_NAME}.desktop)
     add_executable(${PROJECT_NAME} ${SOURCES})
     # Link to any Unix-specific libraries, e.g. .so files
@@ -35,6 +36,13 @@ if(UNIX)
 endif()
 
 if(WIN32)
+    file(GLOB SO_FILES "${STATIC_DIR}/*.so")
+    foreach(SO_FILE ${SO_FILES})
+        get_filename_component(FILENAME ${SO_FILE} NAME)
+        list(APPEND EXCLUDED_FILES "${FILENAME}")
+    endforeach()
+    configure_file(${STATIC_DIR}/resource_template.rc.in
+               ${OUTPUT_DIR}/resource.rc @ONLY)
     add_executable(${PROJECT_NAME} ${SOURCES} ${OUTPUT_DIR}/resource.rc)
     # Link to any Windows-specific libraries, e.g. .dll files
     # target_link_libraries(${PROJECT_NAME} ${STATIC_DIR}/mylib.dll)
